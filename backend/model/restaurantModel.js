@@ -5,9 +5,17 @@ const restaurantSchema = mongoose.Schema({
         type: String,
         required: [true, "Please give a name to your Restaurant"]
     },
+    latitude: {
+        type: Number,
+        required: [true, "Please add the latitude"]
     },
-    {
-        timestamps: true,
-    })
+    longitude: {
+        type: Number,
+        required: [true, "Please add the longitude"]
+    }
+},
+{
+    timestamps: true,
+})
 
 module.exports = mongoose.model('Restaurant', restaurantSchema)

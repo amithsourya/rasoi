@@ -20,10 +20,17 @@ const postRestaurant = asyncHandler(async (req, res)=>{
         res.status(400)
         throw new Error('Add a text field')
     }
-    const restaurant = await Restaurant.create({
-        name: req.body.name
-    })
-
+    if(!req.body.latitude)
+    {
+        res.status(400)
+        throw new Error('Add a Latitude')
+    }
+    if(!req.body.longitude)
+    {
+        res.status(400)
+        throw new Error('Add a Longitude')
+    }
+    const restaurant = await Restaurant.create(req.body)
     res.status(200).json(restaurant)
 })
 //@desc Updates the details of a restaurant: Only by owner
