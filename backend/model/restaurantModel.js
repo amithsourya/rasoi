@@ -1,6 +1,11 @@
 const mongoose = require('mongoose')
 
 const restaurantSchema = mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
+    },
     name: {
         type: String,
         required: [true, "Please give a name to your Restaurant"]
